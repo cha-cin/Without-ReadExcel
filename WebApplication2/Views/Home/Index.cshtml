@@ -1,0 +1,28 @@
+﻿
+@using WebApplication2.Models
+@model SubconModel
+
+
+
+<div class="jumbotron">
+    <h1>Reupload eMap to FTP</h1>
+    <p class="lead">Please insert batchfilename and select correct subcon.</p>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+        <input type="text" id="input_batch" name="input_batch" class="form-control" />
+
+        <p>Select Subcon Name: </p>
+
+        @Html.DropDownList("SelectSubconName", new SelectList(Enum.GetValues(typeof(SubconName))), "-- Subcon List--")
+
+        <input type="submit" id="select_subcon_done" value="submit" onclick="disable_btn()" />
+
+
+    }
+
+    <p>LOG TRACE</p>
+    <!--Html.TextArea("download_msg", (string)(ViewBag.selected_subcon), new { class = "form-control", name = "download_msg" })-->
+    @Html.TextArea("download_msg", (string)(ViewBag.selected_subcon), new { @cols = 140, @rows = 20, name = "download_msg" })
+
+</div>
+
